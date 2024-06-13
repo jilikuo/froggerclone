@@ -12,29 +12,24 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 targetPosition;
     private float currentCooldown;
 
-    //variáveis controladoras de funções 
-    private string read = "r";
-    private string update = "u";
-    private string set = "s";
-
     // Start is called before the first frame update
     void Start()
     {
-        PlayerPosition(read);
-        MoveCooldown(set);
+        ReadPlayerPosition();
+        SetMoveCooldown();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (CanMove(currentCooldown)) //se o cooldown está zerado, permite movimento
+        if (CanMove()) //se o cooldown está zerado, permite movimento
         {
-            PlayerMove();
+            HandleMovement();
         }
-        PlayerPosition(read); //sempre recalcula onde o jogador está
+        ReadPlayerPosition(); //sempre recalcula onde o jogador está
     }
 
-    private void PlayerMove()
+    private void HandleMovement()
     {
 
         /* a ideia de colocar um return em cada if é evitar o movimento
@@ -42,65 +37,60 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
-            targetPosition += Vector2.up * stepSize;
-            PlayerPosition(update);
-            MoveCooldown(set);
+            MovePlayer(Vector2.up);
             return;
         }
         if (Input.GetKeyDown(KeyCode.DownArrow))
         {
-            targetPosition += Vector2.down * stepSize;
-            PlayerPosition(update);
-            MoveCooldown(set);
+            MovePlayer(Vector2.down);
             return;
         }
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         { 
-            targetPosition += Vector2.left * stepSize;
-            PlayerPosition(update);
-            MoveCooldown(set);
+            MovePlayer(Vector2.left);
             return;
         }
         if (Input.GetKeyDown(KeyCode.RightArrow))
         {
-            targetPosition += Vector2.right * stepSize;
-            PlayerPosition(update);
-            MoveCooldown(set);
+            MovePlayer(Vector2.right);
             return;
         }
     }
 
-    private void PlayerPosition(string objective)
+    //funções relacionadas a posição do jogador
+    private void MovePlayer(Vector2 direction)
     {
-        if (objective == read)
-        {
-            targetPosition = transform.position;
-            return;
-        }
-        if (objective == update)
-        {
-            transform.position = targetPosition;
-            return;
-        }
+        targetPosition += direction * stepSize;
+        UpdatePlayerPosition();
+        SetMoveCooldown();
     }
 
-    private void MoveCooldown(string objective)
+    private void ReadPlayerPosition()
     {
-        if (objective == set)
-        {
-            currentCooldown = mvCooldown;
-        }
-        if (objective == update)
-        {
-            currentCooldown -= Time.deltaTime;
-        }
+        targetPosition = transform.position;
     }
 
-    private bool CanMove(float cd)
+    private void UpdatePlayerPosition()
+    { 
+        transform.position = targetPosition;
+    }
+
+    //funções relacionadas ao limite de movimento
+    private void SetMoveCooldown()
     {
-        if (cd > 0)
+        currentCooldown = mvCooldown;
+    }
+
+    private void UpdateMoveCooldown()
+    { 
+        currentCooldown -= Time.deltaTime;
+    }
+
+    private bool CanMove()
+    {
+        if (currentCooldown > 0)
         {
-            MoveCooldown(update);
+            UpdateMoveCooldown();
             return false;
         }
         else
