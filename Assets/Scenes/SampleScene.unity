@@ -5389,6 +5389,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stepSize: 1
+  mvCooldown: 0.06
 --- !u!1 &1481343883
 GameObject:
   m_ObjectHideFlags: 0
