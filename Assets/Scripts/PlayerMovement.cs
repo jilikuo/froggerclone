@@ -12,6 +12,12 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 targetPosition;
     private float currentCooldown;
 
+    //constantes limites de cenário
+    private const int limitNorth =   5;
+    private const int limitEast  =  10;
+    private const int limitSouth =  -5;
+    private const int limitWest  = -10;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -61,9 +67,31 @@ public class PlayerMovement : MonoBehaviour
     //funções relacionadas a posição do jogador
     private void MovePlayer(Vector2 direction)
     {
-        targetPosition += direction * stepSize;
-        UpdatePlayerPosition();
-        SetMoveCooldown();
+        Vector2 movementVector = direction * stepSize;
+
+        if (ValidateMovement(movementVector))
+        {
+            targetPosition += movementVector;
+            UpdatePlayerPosition();
+            SetMoveCooldown();
+        }
+        else
+        {
+            return;
+        }
+    }
+
+    private bool ValidateMovement(Vector2 mV)
+    {
+        if ((targetPosition.x + mV.x) <= limitWest || (targetPosition.x + mV.x) >= limitEast ||
+            (targetPosition.y + mV.y) <= limitSouth || (targetPosition.y + mV.y) >= limitNorth)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
     }
 
     //define a target position como a posição atual do jogador
