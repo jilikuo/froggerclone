@@ -81,6 +81,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    //verifica se o jogador está dentro do limite do cenário
     private bool ValidateMovement(Vector2 mV)
     {
         if ((targetPosition.x + mV.x) <= limitWest || (targetPosition.x + mV.x) >= limitEast ||
