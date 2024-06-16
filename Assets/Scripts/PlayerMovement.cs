@@ -29,6 +29,7 @@ public class PlayerMovement : MonoBehaviour
         ReadPlayerPosition(); //sempre recalcula onde o jogador está
     }
 
+    //operação principal de movimento
     private void HandleMovement()
     {
 
@@ -65,11 +66,13 @@ public class PlayerMovement : MonoBehaviour
         SetMoveCooldown();
     }
 
+    //define a target position como a posição atual do jogador
     private void ReadPlayerPosition()
     {
         targetPosition = transform.position;
     }
 
+    //move o jogador para a targetposition
     private void UpdatePlayerPosition()
     { 
         transform.position = targetPosition;
@@ -81,11 +84,14 @@ public class PlayerMovement : MonoBehaviour
         currentCooldown = mvCooldown;
     }
 
+    //diminui o tempo que passou do cooldown
     private void UpdateMoveCooldown()
-    { 
+    {
         currentCooldown -= Time.deltaTime;
     }
 
+
+    // verifica se o jogador pode se mover
     private bool CanMove()
     {
         if (currentCooldown > 0)
