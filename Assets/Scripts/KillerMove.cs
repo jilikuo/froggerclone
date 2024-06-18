@@ -4,13 +4,10 @@ using UnityEngine;
 
 public class KillerMove : MonoBehaviour
 {
-    //vari·veis de controle de dificuldade
+    //vari√°veis de controle de dificuldade
     public float moveSpeed;
 
-    //vari·veis de alvo
-    public GameObject targePlayer;
-
-    //vari·veis de controle de operaÁ„o
+    //vari√°veis de controle de opera√ß√£o
     private Vector2 killerPosition;
     private Rigidbody2D thisBody;
     private Vector2 forceDirection;
