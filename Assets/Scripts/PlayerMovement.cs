@@ -18,14 +18,12 @@ public class PlayerMovement : MonoBehaviour
     private const int limitSouth =  -5;
     private const int limitWest  = -10;
 
-    // Start is called before the first frame update
     void Start()
     {
         ReadPlayerPosition();
         SetMoveCooldown();
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (CanMove()) //se o cooldown está zerado, permite movimento

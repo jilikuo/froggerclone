@@ -12,7 +12,6 @@ public class KillerMove : MonoBehaviour
     private Rigidbody2D thisBody;
     private Vector2 forceDirection;
 
-    // Start is called before the first frame update
     void Start()
     {
         killerPosition = transform.position;
@@ -20,7 +19,6 @@ public class KillerMove : MonoBehaviour
         VerifyPosition();
     }
 
-    // Update is called once per frame
     void FixedUpdate()
     {
         thisBody.AddForce(forceDirection * moveSpeed);
