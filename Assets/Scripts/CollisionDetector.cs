@@ -13,9 +13,12 @@ public class CollisionDetector : MonoBehaviour
         entKiller = this.gameObject;
     }
 
-    private void OnTriggerEnter2D() 
-    {   
-        entPlayer.SetActive(false);      
+    private void OnTriggerEnter2D(Collider2D other) 
+    {
+        if (other.gameObject == entPlayer)
+        {
+            entPlayer.SetActive(false);
+        }
     }
 
 }
