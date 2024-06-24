@@ -10,7 +10,7 @@ public class CollisionDetector : MonoBehaviour
 
     void Start()
     {
-        objUI     = GameObject.Find("GameStateText");
+        objUI     = GameObject.Find("GameStateText ");
         entPlayer = GameObject.FindWithTag("Player");
         entKiller = this.gameObject;
     }
