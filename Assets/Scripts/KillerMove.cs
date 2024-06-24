@@ -21,8 +21,7 @@ public class KillerMove : MonoBehaviour
 
     void FixedUpdate()
     {
-        //precisa trocar por um movimento uniforme
-        thisBody.AddForce(forceDirection * moveSpeed);
+        thisBody.velocity = forceDirection * moveSpeed;
     }
 
     private void VerifyPosition()
