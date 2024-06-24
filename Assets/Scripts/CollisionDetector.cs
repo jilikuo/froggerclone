@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class CollisionDetector : MonoBehaviour
 {
+    private GameObject objUI;
     private GameObject entPlayer;
-    private GameObject entKiller; 
+    private GameObject entKiller;
 
     void Start()
     {
+        objUI     = GameObject.Find("GameStateText");
         entPlayer = GameObject.FindWithTag("Player");
         entKiller = this.gameObject;
     }
@@ -17,7 +19,9 @@ public class CollisionDetector : MonoBehaviour
     {
         if (other.gameObject == entPlayer)
         {
-            entPlayer.SetActive(false);
+            entPlayer.GetComponent<PlayerMovement>().enabled = false;
+            objUI.GetComponent<TextMesh>().text = "Game Over";
+            objUI.SetActive(true);
         }
     }
 
