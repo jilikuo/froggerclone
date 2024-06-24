@@ -1533,7 +1533,7 @@ GameObject:
   - component: {fileID: 479050448}
   - component: {fileID: 479050447}
   m_Layer: 5
-  m_Name: GameStateText
+  m_Name: GameOver
   m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5342,9 +5342,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1328474772}
   - component: {fileID: 1328474773}
+  - component: {fileID: 1328474774}
   m_Layer: 0
   m_Name: GameManager
-  m_TagString: Untagged
+  m_TagString: GameController
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5377,8 +5378,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   easyEnemy: {fileID: 8912099967548783362, guid: 0f97a1f77b4c6446989cf78a7bee3d20, type: 3}
-  spawnCooldown: 0.15
-  laneCooldown: []
+  spawnCooldown: 0.3
+--- !u!114 &1328474774
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1328474771}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a836a58cd35143e2933b895dadc6d62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameOverUI: {fileID: 479050445}
 --- !u!1 &1338861425
 GameObject:
   m_ObjectHideFlags: 0
