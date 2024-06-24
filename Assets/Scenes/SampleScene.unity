@@ -5377,7 +5377,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   easyEnemy: {fileID: 8912099967548783362, guid: 0f97a1f77b4c6446989cf78a7bee3d20, type: 3}
-  spawnCooldown: 0.1
+  spawnCooldown: 0.15
+  laneCooldown: []
 --- !u!1 &1338861425
 GameObject:
   m_ObjectHideFlags: 0
