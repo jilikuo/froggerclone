@@ -6,13 +6,11 @@ public class CollisionDetector : MonoBehaviour
 {
     private GameObject controller;
     private GameObject entPlayer;
-    private GameObject entKiller;
 
     void Start()
     {
         controller   = GameObject.FindWithTag("GameController");
         entPlayer    = GameObject.FindWithTag("Player");
-        entKiller    = this.gameObject;
     }
 
     private void OnTriggerEnter2D(Collider2D other) 
