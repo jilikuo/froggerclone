@@ -9,11 +9,13 @@ public class FinishLine : MonoBehaviour
 
     private void Start()
     {
+        //encontra o gerenciador do jogo
         controller = GameObject.FindWithTag("GameController");
     }
 
     void Update()
     {
+        //se a posição y do jogador for igual a última lane, aciona a tela de próximo nível
         playerPosy = GameObject.FindWithTag("Player").transform.position.y;
         if (playerPosy >= 4.5f)
         {

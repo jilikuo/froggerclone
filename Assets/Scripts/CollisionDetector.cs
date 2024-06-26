@@ -13,8 +13,10 @@ public class CollisionDetector : MonoBehaviour
         entPlayer    = GameObject.FindWithTag("Player");
     }
 
+
     private void OnTriggerEnter2D(Collider2D other) 
     {
+        //se houver colisão, desativa o movimento do jogador e chama a tela de game over
         if (other.gameObject == entPlayer)
         {
             entPlayer.GetComponent<PlayerMovement>().enabled = false;
