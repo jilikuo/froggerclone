@@ -6,10 +6,12 @@ public class FinishLine : MonoBehaviour
 {
     private GameObject controller;
     private float playerPosy;
+    private bool finishedLevel;
 
     private void Start()
     {
-        //encontra o gerenciador do jogo
+        finishedLevel = false;
+        //encontra o gerenciador do jogo, já que ele será o responsável pelos outros scripts
         controller = GameObject.FindWithTag("GameController");
     }
 
@@ -17,11 +19,12 @@ public class FinishLine : MonoBehaviour
     {
         //se a posição y do jogador for igual a última lane, aciona a tela de próximo nível
         playerPosy = GameObject.FindWithTag("Player").transform.position.y;
-        if (playerPosy >= 4.5f)
+        if (playerPosy >= 4.5f && !finishedLevel)
         {
             controller.GetComponent<NextLevelScreen>().CallNextLevelScreen(true);
             controller.GetComponent<ScoreManager>().AddScore();
             controller.GetComponent<ScoreManager>().ScoreBoardUpdate();
+            finishedLevel = true;
         }
     }
 }
