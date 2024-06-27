@@ -20,6 +20,8 @@ public class FinishLine : MonoBehaviour
         if (playerPosy >= 4.5f)
         {
             controller.GetComponent<NextLevelScreen>().CallNextLevelScreen(true);
+            controller.GetComponent<ScoreManager>().AddScore();
+            controller.GetComponent<ScoreManager>().ScoreBoardUpdate();
         }
     }
 }
