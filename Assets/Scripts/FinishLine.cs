@@ -21,10 +21,10 @@ public class FinishLine : MonoBehaviour
         playerPosy = GameObject.FindWithTag("Player").transform.position.y;
         if (playerPosy >= 4.5f && !finishedLevel)
         {
-            controller.GetComponent<NextLevelScreen>().CallNextLevelScreen(true);
-            controller.GetComponent<ScoreManager>().AddScore();
-            controller.GetComponent<ScoreManager>().ScoreBoardUpdate();
             finishedLevel = true;
+            controller.GetComponent<ScoreManager>().AddScore();
+            controller.GetComponent<NextLevelScreen>().CallNextLevelScreen(true);
+            controller.GetComponent<ScoreManager>().ScoreBoardUpdate();
         }
     }
 }
